@@ -8,30 +8,33 @@ authorTotalQuotes.classList.add("total-quotes");
 const loadBtn = document.createElement("button");
 loadBtn.textContent = "randomize quote";
 
-let fetchQuote = () => {
-  fetch("https://thatsthespir.it/api")
-    .then((response) => response.json())
-    .then((data) => {
-      quote.innerHTML = "";
-      authorImg.src = "";
-      authorName.textContent = "";
-      authorTotalQuotes.textContent = "";
+let fetchQuote = async () => {
+  try {
+    const response = await fetch("https://thatsthespir.it/api");
+    if (!response.ok) {
+      throw new Error("Network connection failed, try again ?!");
+    }
+    const data = await response.json();
 
-      quote.innerHTML += data.quote;
-      authorImg.src = data.photo;
-      authorName.textContent += data.author;
-      authorTotalQuotes.textContent += "Famous quotes : " + data.total_quotes;
+    quote.innerHTML = "";
+    authorImg.src = "";
+    authorName.textContent = "";
+    authorTotalQuotes.textContent = "";
 
-      container.appendChild(quote);
-      imgContainer.appendChild(authorImg);
-      container.appendChild(imgContainer);
-      container.appendChild(authorName);
-      container.appendChild(authorTotalQuotes);
-      container.appendChild(loadBtn);
-    })
-    .catch((error) => {
-      console.log("Sorry, an error has occured !", error);
-    });
+    quote.innerHTML += data.quote;
+    authorImg.src = data.photo;
+    authorName.textContent += data.author;
+    authorTotalQuotes.textContent += "Famous quotes : " + data.total_quotes;
+
+    container.appendChild(quote);
+    imgContainer.appendChild(authorImg);
+    container.appendChild(imgContainer);
+    container.appendChild(authorName);
+    container.appendChild(authorTotalQuotes);
+    container.appendChild(loadBtn);
+  } catch (error) {
+    console.log("Sorry, an error has occured !", error);
+  }
 };
 fetchQuote();
 
