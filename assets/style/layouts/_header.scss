@@ -1,0 +1,16 @@
+header {
+  display: flex;
+  justify-content: center;
+  padding-top: 24px;
+  a {
+    color: #008170;
+    font-family: "Dela Gothic One", cursive;
+    font-weight: 600;
+    text-decoration: none;
+  }
+  &:hover {
+    a {
+      color: white;
+    }
+  }
+}

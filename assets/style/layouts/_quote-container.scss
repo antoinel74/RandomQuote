@@ -1,0 +1,64 @@
+body {
+  background-color: #232d3f;
+}
+
+#quote-container {
+  width: 100%;
+  height: 100%;
+  margin-top: 48px;
+  text-align: center;
+  padding-bottom: 84px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  h1 {
+    font-size: 2em;
+    text-align: center;
+    width: 100%;
+    font-family: "Dela Gothic One", cursive;
+    position: relative;
+    z-index: 20;
+    color: white;
+    &::before {
+      content: '"';
+      position: absolute;
+      font-style: italic;
+      font-size: 6em;
+      top: 0;
+      z-index: -2;
+      color: #008170;
+    }
+  }
+  figure {
+    position: relative;
+    margin: 36px 0px;
+    height: 280px;
+    width: 280px;
+    aspect-ratio: 1/1;
+    transition: all 0.3s ease-in-out;
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 50%;
+    }
+  }
+  figcaption {
+    margin-bottom: 12px;
+    font-weight: 600;
+    color: white;
+  }
+  .total-quotes {
+    color: rgba(255, 255, 255, 0.426);
+    font-style: italic;
+    margin-bottom: 36px;
+  }
+}
+
+@media screen and (min-width: 1020px) {
+  #quote-container {
+    h1 {
+      font-size: 2.5em;
+    }
+  }
+}
